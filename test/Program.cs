@@ -3,8 +3,16 @@
 
 Console.WriteLine("Введите размер массива: ");
 int size = int.Parse(Console.ReadLine() ?? "");
-//string[] array = CreateArray(size);
-Console.Write(String.Join(",", CreateArray(size)));
+
+string[] array = CreateArray(size);
+Console.Write("Исходный массив: ");
+Console.Write(String.Join(",", array));
+
+Console.WriteLine();
+
+Console.Write("Финальный массив: ");
+string[] secondArray = FormArray(array);
+Console.Write(String.Join(",", secondArray));
 
 string[] CreateArray(int length)
 {
@@ -15,6 +23,12 @@ string[] CreateArray(int length)
         arr[i] = Console.ReadLine() ?? "";
     }
     return arr;
+}
+
+string[] FormArray(string[] finalArray)
+{
+    string[] myArray = Array.FindAll(finalArray, str => str.Length <= 3);
+    return myArray;
 }
 
 
